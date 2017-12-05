@@ -2,7 +2,7 @@
   <div class="head-container">
     <canvas id="my-canvas"></canvas>
     <div class="eye-catching"></div>
-    <h1 class="center">黄岩脚</h1>
+    <h1 class="center"><a>黄</a><a>岩</a><a>脚</a></h1>
     <a class="notice" href="https://www.google.com">所有的效果都是抄袭的，不要打扰我，谢谢</a>
   </div>
 </template>
