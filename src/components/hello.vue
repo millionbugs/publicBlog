@@ -9,6 +9,12 @@
 
 <script>
   export default {
+    created () {
+      this.$http.get('/api/blog')
+        .then((res) => {
+          console.log(res && res.data)
+        })
+    },
     mounted () {
       document.addEventListener('touchmove', function (e) {
         e.preventDefault()
