@@ -74,6 +74,15 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test: /\.md$/,
+        use: [{
+          loader: 'markdown-loader'
+        },
+        {
+          loader: 'html-loader'
+        }]
       }
     ]
   },

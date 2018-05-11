@@ -16,8 +16,11 @@
   "dependencies": {
     "axios": "^0.17.1",
     "cheerio": "^1.0.0-rc.2",
+    "html-loader": "^0.5.5",
     "koa": "^2.4.1",
     "koa-router": "^7.4.0",
+    "markdown-loader": "^2.0.2",
+    "md-js": "^1.0.3",
     "superagent": "^3.8.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
