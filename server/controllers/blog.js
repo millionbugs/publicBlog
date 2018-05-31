@@ -1,7 +1,12 @@
+// import iteratorFunction from './iterator'
+// import strs from './wangyiyun'
+
+const strs = require('./wangyiyun')
 const superagent = require('superagent')
 const fs = require('fs')
 const cheerio = require('cheerio')
 const Mdjs = require('md-js')
+const vue = require('vue')
 let nextUrl = 'nndss/nndss_weekly_tables_menu.asp?mmwr_year=2006&mmwr_week=04'
 let localFilePath = 'tableDress.text'
 let mdFilePath = '/Users/yangsir/Desktop/blog/my-project/build/md/importMdTest.md'
@@ -53,30 +58,34 @@ function formatPage (nextUrl, file, cb) {
 
 function readMd (filePath) {
   if (!filePath) return
-  return fs.readFileSync(filePath, function (err, data) {
-    if (err) {
-      console.log(`read ${filePath} failed ${err}`)
-      return `read ${filePath} failed ${err}`
-    }
-    return data
-  })
+  return fs.readFileSync(filePath)
 }
 
 module.exports = {
-  sthHappen: function () {
+  sthHappen: function (ctx) {
     console.log('接收到本次请求')
-    return '你好'
+    ctx.body = '你好'
   },
-  baidu: function () {
+  baidu: function (ctx) {
     eachPage(nextUrl)
     superagent('https://wonder.cdc.gov/' + 'nndss_reps.asp?mmwr_year=2006&mmwr_week=04&mmwr_table=2A&request=Export')
     .end((err, res) => {
+      ctx.body = res.text
       console.log(err, '坏🍆')
       console.log(res, '好🍆')
     })
   },
-  mdTest: function () {
+  mdTest: function (ctx) {
     let mdText = readMd(mdFilePath).toString()
-    return Mdjs.md2html(mdText)
+    ctx.body = Mdjs.md2html(mdText)
+  },
+  scrollBetter: function (ctx) {
+    ctx.body = readMd('/Users/yangsir/Desktop/blog/my-project/build/static/滚动事件总结.html').toString()
+  },
+  wyySongs: function (ctx) {
+    ctx.body = strs
+  },
+  vue: function (ctx) {
+    ctx.body = typeof vue
   }
 }
